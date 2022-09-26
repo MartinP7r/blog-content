@@ -5,7 +5,7 @@ let package = Package(
     name: "MyApp",
     dependencies: [
         .package(url: "https://github.com/JohnSundell/Files", from: "4.2.0"),
-        .package(url: "https://github.com/apple/swift-argument-parser", from: "1.1.4"),
+        .package(url: "https://github.com/martinP7r/swift-argument-parser", branch: "testhelper_product"),
     ],
     targets: [
         .executableTarget(
@@ -16,6 +16,9 @@ let package = Package(
             ]),
         .testTarget(
             name: "MyAppTests",
-            dependencies: ["MyApp"]),
+            dependencies: [
+                "MyApp",
+                .product(name: "ArgumentParserTestHelpers", package: "swift-argument-parser")
+            ]),
     ]
 )
